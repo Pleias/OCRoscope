@@ -19,7 +19,7 @@ current_data = json.load(open("french_ocr.json"))
 for element in current_data:
     ocr_estimate = ocr_evaluation(id = element["file_id"], text = element["sampled_text"])
     ocr_estimate.calculate_ocr_rate()
-    element["ratio_segment"], element["numeric_content"] = ocr_estimate.ratio_segment, ocr_estimate.ratio_numeric
+    element["ocr_quality"], element["numeric_content"] = ocr_estimate.ratio_segment, ocr_estimate.ratio_numeric
 
 with open("estimate_french_ocr.json", 'w') as text_write:
     json.dump(current_data, text_write)
