@@ -5,7 +5,7 @@ setup(
     version='0.1.0',
     description='A Python package for OCR evaluation metrics',
     author='Pierre-Carl Langlais',
-    url='https://github.com/Pleias/marginalia',
+    url='https://github.com/Pleias/OCRoscope',
     packages=find_packages("pycld2"),
     classifiers=[
         'Development Status :: 3 - Alpha',
