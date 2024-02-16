@@ -1,3 +1,5 @@
+from .ocr_function import detect_languages, letter_ratio, split_text, split_text_sampling
+
 #Generic class for ocr evaluation
 class ocr_evaluation:
     def __init__(self, id = None, text = None):
