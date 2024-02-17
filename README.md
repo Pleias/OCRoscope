@@ -15,7 +15,7 @@ OCRoscope leverages the differential results of language detection techniques fo
 
 Language detection is performed by cld2 (through the Python package Pycld2). While better language detection model exists (including cld2 successor, cld3), cld2 is likely the fastest currently available and is struggling more with OCR noises which is unexpectedly a feature for OCRoscope. OCR quality rate estimated through cld2 is rather well distributed, which makes it easier to differentiate really good OCR quality from correct one.
 
-To illustrate the approach, this long text is correctly identified as French with >99% confidence by pycld2, as despite the many mistakes, there are enough non-ambiguous French words:
+To illustrate the approach, this long text is correctly identified as French with >99% confidence by cld2, as despite the many mistakes, there are enough non-ambiguous French words:
 
 > NOUVELLES POLI TI Q^U E S. Suede. Stockholm , le 2 5 décembre 1792. Le général Toll ira à Varsovie en quarté d'envoyé de la Suede auprès du roi et de la république ; A 1 même rey.u l'ordre de s'y rendra incessamment. 11 paraît que k Uc-régeik a des craintes ; il a fait venir chez l*ji les membres c Ij*``` tribunal 4e la cour , et leur a rtmis son lesfca n at. La fermentation qu'a causée 1 ,'ari r?tavh n k M p v riote Thorild tî'est pas appaisée y le luigage qv'il a yailé an duc-régent a été bien entendu par le peu) k y ir M» (U i n'entendrait pas l'apostrdphe suivante ? ttRxc3xa7nd &gt;la libuk à r otre raison , et ne et nous force pas de i'ache'ef r i te n :e sang,.
 >
