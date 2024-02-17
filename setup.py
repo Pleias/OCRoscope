@@ -7,6 +7,9 @@ setup(
     author='Pierre-Carl Langlais',
     url='https://github.com/Pleias/OCRoscope',
     packages=find_packages(),
+    install_requires=[
+        'pycld2'
+    ],
     classifiers=[
         'Development Status :: 3 - Alpha',
         'Intended Audience :: Developers',
