@@ -4,6 +4,7 @@ import glob
 import json
 import string
 from statistics import mean 
+from random import sample 
 
 import pycld2 as cld2
 
@@ -27,51 +28,33 @@ def letter_ratio(s):
         ratio = letter_count / non_letter_count
     return ratio
 
-#Generic function to split texts into segments.
-#(cannot use the sample version for everything )
-def split_text(text, segment_length):
+
+#Function for text split but this time with an option of using a sample instead
+#For long texts, a sample of 1000 should be more than enough to
+def split_text_sampling(text, segment_length, sample_size = None, min_letter_ratio = .3):
     words = text.split()
     num_segments = (len(words) + segment_length - 1) // segment_length
     list_segment = []
-    id_segment = 0
-    for i in range(num_segments):
-        start = i * segment_length
-        end = min(start + segment_length, len(words))
-        segment = words[start:end]
-        if len(segment) == segment_length:
-            list_segment.append(' '.join(words[start:end]))
-    return list_segment
-
-#Function for text split but this time with an option of a sampling ratio.
-#10 => 1 ngram out of 10.
-#Speeds up processing significantly but at a cost in accuracy for short texts.
-def split_text_sampling(text, segment_length, sampling_ratio = 1, min_letter_ratio = .3):
-    words = text.split()
-    num_segments = (len(words) + segment_length - 1) // segment_length
-    list_segment = []
-
-    #If there are less segments than the squared sampling ratio we redefine it to get a fixed number of segments
-    #(maybe we should take ^3 instead)
-    if num_segments <= sampling_ratio^2:
-        if num_segments >= sampling_ratio:
-            sampling_ratio = round(num_segments/sampling_ratio)
-        else:
-            sampling_ratio = 1
     
     #We initialize the id segment (for sampling)
     #And a count of numeric content (for easier filtering)
-    id_segment = 0
-    numeric_content = 0
+    nonchar_content = 0
+
+    #We iterate over the segments and keep them if they pass the heuristic for letter/non-letter ratio
     for i in range(num_segments):
-        id_segment = id_segment+1
         start = i * segment_length
         end = min(start + segment_length, len(words))
         segment = words[start:end]
         if len(segment) == segment_length:
-            if (id_segment % sampling_ratio) == 0:
-                if letter_ratio(segment) > min_letter_ratio:
-                    if len(segment)>0:
-                        list_segment.append(' '.join(words[start:end]))
-                else:
-                    numeric_content += 1
-    return list_segment, numeric_content
+            if letter_ratio(segment) > min_letter_ratio:
+                if len(segment)>0:
+                    list_segment.append(' '.join(words[start:end]))
+            else:
+                nonchar_content += 1
+    
+    #We activate the sampling mode if there is a sample_size specified and if the number of segments in the text is longer the sample size.
+    if sample_size is not None:
+        if num_segments >= sample_size:
+            list_segment = sample(list_segment, sample_size)
+        
+    return list_segment, nonchar_content
