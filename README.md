@@ -12,6 +12,7 @@ The standardized measure of OCRoscope can be used to assess the feasibility of s
 OCRoscope relies on cld2 for OCR rate estimation and should run in a little more than 80 languages.
 
 ## Use
+The easiest way to use OCRoscope is to try the official [demo on Colab](https://colab.research.google.com/drive/1tXJYi6fz9mEWISWBmaLpVgwnLqk1Nive?usp=sharing).
 
 Given a text, OCRoscope will return a python object with associated metrics:
 * A standardized rate of OCR quality.
@@ -19,18 +20,17 @@ Given a text, OCRoscope will return a python object with associated metrics:
 
 ```python
 from ocroscope import ocr_evaluation
-import pandas as pd
-import json
+import urllib.request, json
 
-current_data = json.load(open("french_ocr.json"))
+with urllib.request.urlopen("https://raw.githubusercontent.com/Pleias/OCRoscope/main/notebook/sample_french_ocr.json") as url:
+    sample_ocr = json.load(url)
 
-for element in current_data:
-    ocr_estimate = ocr_evaluation(id = element["file_id"], text = element["sampled_text"])
+from ocroscope import ocr_evaluation
+
+for ocr_text in sample_ocr:
+    ocr_estimate = ocr_evaluation(id = ocr_text["file_id"], text = ocr_text["sampled_text"])
     ocr_estimate.calculate_ocr_rate()
-    element["ocr_quality"], element["numeric_content"] = ocr_estimate.ratio_segment, ocr_estimate.ratio_numeric
-
-with open("estimate_french_ocr.json", 'w') as text_write:
-    json.dump(current_data, text_write)
+    ocr_text["ocr_quality"], ocr_text["nonchar"] = ocr_estimate.ratio_segment, ocr_estimate.ratio_nonchar
 ```
 
 ## Methodology
