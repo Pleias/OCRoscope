@@ -18,6 +18,7 @@ Language detection is performed by cld2 (through the Python package Pycld2). Whi
 To illustrate the approach, this long text is correctly identified as French with >99% confidence by pycld2, as despite the many mistakes, there are enough non-ambiguous French words:
 
 > NOUVELLES POLI TI Q^U E S. Suede. Stockholm , le 2 5 décembre 1792. Le général Toll ira à Varsovie en quarté d'envoyé de la Suede auprès du roi et de la république ; A 1 même rey.u l'ordre de s'y rendra incessamment. 11 paraît que k Uc-régeik a des craintes ; il a fait venir chez l*ji les membres c Ij*``` tribunal 4e la cour , et leur a rtmis son lesfca n at. La fermentation qu'a causée 1 ,'ari r?tavh n k M p v riote Thorild tî'est pas appaisée y le luigage qv'il a yailé an duc-régent a été bien entendu par le peu) k y ir M» (U i n'entendrait pas l'apostrdphe suivante ? ttRxc3xa7nd &gt;la libuk à r otre raison , et ne et nous force pas de i'ache'ef r i te n :e sang,.
+>
 > Le duc a fait x,épa4idre sur-le-champ une fjtbprijuun à te us les habitans di$ Toyaume , pour les detourntr de mr laisser sé luire par de fa,ux bruits et des jugemens pe rver$ , e i en même temps l'ordre a. été donné à la garnison de charger et de se tenir prête à marcher.
 > 
 > (*Mercure Français*, 1793, January 25th)
