@@ -5,7 +5,9 @@
 <img src="https://raw.githubusercontent.com/Pleias/ocroscope/main/ocroscope_logo.jpg" alt="ocroscope logo" height="300px"/>
 </p>
 
-OCRoscope aims to provide a standardized automated baseline for OCR evaluation. While OCR systems like Tesseract or ABBYY commonly give an estimate of OCR quality, this measure is not always communicated and, even more crucially, is not harmonized and will vary significantly across softwares or versions of the same software. The standardized measure of OCRoscope can be used to assess the feasibility of several downstream tasks on OCR corpus. For intance, named entity recognition methods relying on syntax analysis usually requires an OCR of sufficient quality, as even an occasional missing word can break up the sentence analysis. This is less of a requirement for other tasks such as supervised classification on occurrence counts of pre-training of transformer models.
+OCRoscope aims to provide a standardized automated baseline for OCR evaluation. While OCR systems like Tesseract or ABBYY commonly give an estimate of OCR quality, this measure is not always communicated and, even more crucially, is not harmonized and will vary significantly across softwares or versions of the same software.
+
+The standardized measure of OCRoscope can be used to assess the feasibility of several downstream tasks on OCR corpus. For intance, named entity recognition methods relying on syntax analysis usually requires an OCR of sufficient quality, as even an occasional missing word can break up the sentence analysis. This is less of a requirement for other tasks such as supervised classification on occurrence counts of pre-training of transformer models.
 
 ## Methodology
 
