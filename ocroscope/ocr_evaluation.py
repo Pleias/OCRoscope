@@ -20,7 +20,7 @@ class ocr_evaluation:
                     if language[1] > 20:
                         language_list.append(language[0])
             else:
-                segments_lang = split_text(text, segment_length = language_detection_segment)
+                segments_lang, nonchar_content = split_text(text, segment_length = language_detection_segment)
                 language_list = []
                 for segment in segments_lang:
                     for language in detect_languages(segment):
@@ -29,7 +29,7 @@ class ocr_evaluation:
                 language_list = list(sorted(language_list))
 
             #Now OCR:
-            segments, self.numeric_content = split_text(text, segment_length = ocr_detection_segment, sample_size = 1000)
+            segments, self.nonchar_content = split_text(text, segment_length = ocr_detection_segment, sample_size = 1000)
             self.unidentified_segment = 0
             self.identified_segment = 0
             list_probability = []
@@ -50,10 +50,10 @@ class ocr_evaluation:
                 self.ratio_segment = round(100-(self.ratio_segment*100))
                 
                 #Rate for numeric content
-                self.ratio_numeric = self.numeric_content/(self.identified_segment+self.unidentified_segment+self.numeric_content)
-                self.ratio_numeric = round(self.ratio_numeric*100)
+                self.ratio_nonchar = self.numeric_content/(self.identified_segment+self.unidentified_segment+self.nonchar_content)
+                self.ratio_nonchar = round(self.ratio_nonchar*100)
                 self.probability = mean(list_probability)
             else:
                 self.ratio_segment = None
                 self.probability = None
-                self.ratio_numeric = None
+                self.ratio_nonchar = None
