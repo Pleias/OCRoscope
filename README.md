@@ -3,6 +3,10 @@
 
 OCRoscope aims to provide a standardized automated baseline for OCR evaluation.
 
+<p align="center">
+<img src="https://raw.githubusercontent.com/Pleias/ocroscope/main/ocroscope.jpg" alt="marginalia logo"/>
+</p>
+
 ## Typical usage
 
 Given a text, OCRoscope will return a python object with associated metrics:
