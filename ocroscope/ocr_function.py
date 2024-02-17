@@ -31,7 +31,7 @@ def letter_ratio(s):
 
 #Function for text split but this time with an option of using a sample instead
 #For long texts, a sample of 1000 should be more than enough to
-def split_text_sampling(text, segment_length, sample_size = None, min_letter_ratio = .3):
+def split_text(text, segment_length, sample_size = None, min_letter_ratio = .3):
     words = text.split()
     num_segments = (len(words) + segment_length - 1) // segment_length
     list_segment = []
