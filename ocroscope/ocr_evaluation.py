@@ -1,4 +1,4 @@
-from .ocr_function import detect_languages, letter_ratio, split_text, split_text_sampling
+from .ocr_function import detect_languages, letter_ratio, split_text
 from statistics import mean 
 
 #Generic class for ocr evaluation
