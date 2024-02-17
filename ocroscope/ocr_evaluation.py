@@ -8,7 +8,7 @@ class ocr_evaluation:
         self.text = text
         self.length_text = len(text.split())
     
-    def calculate_ocr_rate(self, language_detection_segment = 1000, ocr_detection_segment = 7):
+    def calculate_ocr_rate(self, language_detection_segment = 1000, ocr_detection_segment = 7, sample_size = 1000):
         if self.length_text <= ocr_detection_segment:
             print("Text is too short for OCR rate recognition. Aborting!")
         else:
@@ -20,16 +20,16 @@ class ocr_evaluation:
                     if language[1] > 20:
                         language_list.append(language[0])
             else:
-                segments_lang = split_text(text, language_detection_segment)
+                segments_lang = split_text(text, segment_length = language_detection_segment)
                 language_list = []
                 for segment in segments_lang:
                     for language in detect_languages(segment):
                         if language[1] > 20:
                             language_list.append(language[0])
                 language_list = list(sorted(language_list))
-            
+
             #Now OCR:
-            segments, self.numeric_content = split_text_sampling(text, ocr_detection_segment)
+            segments, self.numeric_content = split_text(text, segment_length = ocr_detection_segment, sample_size = 1000)
             self.unidentified_segment = 0
             self.identified_segment = 0
             list_probability = []
