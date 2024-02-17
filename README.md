@@ -4,7 +4,7 @@
 OCRoscope aims to provide a standardized automated baseline for OCR evaluation.
 
 <p align="center">
-<img src="https://raw.githubusercontent.com/Pleias/ocroscope/main/ocroscope.jpg" alt="marginalia logo"/>
+<img src="https://raw.githubusercontent.com/Pleias/ocroscope/main/ocroscope.jpg" alt="marginalia logo" height="150px"/>
 </p>
 
 ## Typical usage
