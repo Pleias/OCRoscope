@@ -33,7 +33,7 @@ for ocr_text in sample_ocr:
     ocr_text["ocr_quality"], ocr_text["nonchar"] = ocr_estimate.ratio_segment, ocr_estimate.ratio_nonchar
 ```
 
-## Methodology
+## Method
 
 OCRoscope leverages the differential results of language detection techniques for short and long OCR texts. On long texts, language detection is usually resilient to mistakes. This is no longer the case when language detection is applied on very short segments. The standard measure of OCR quality in OCRscope checks is based on a ratio of ngrams (7-grams by default) with a language not matching the one detected on long segments.
 
