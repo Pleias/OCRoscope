@@ -50,7 +50,7 @@ class ocr_evaluation:
                 self.ratio_segment = round(100-(self.ratio_segment*100))
                 
                 #Rate for numeric content
-                self.ratio_nonchar = self.numeric_content/(self.identified_segment+self.unidentified_segment+self.nonchar_content)
+                self.ratio_nonchar = self.nonchar_content/(self.identified_segment+self.unidentified_segment+self.nonchar_content)
                 self.ratio_nonchar = round(self.ratio_nonchar*100)
                 self.probability = mean(list_probability)
             else:
