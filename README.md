@@ -9,6 +9,8 @@ OCRoscope aims to provide a standardized automated baseline for OCR evaluation. 
 
 The standardized measure of OCRoscope can be used to assess the feasibility of several downstream tasks on OCR corpus. For intance, named entity recognition methods relying on syntax analysis usually requires an OCR of sufficient quality, as even an occasional missing word can break up the sentence analysis. This is less of a requirement for other tasks such as supervised classification on occurrence counts of pre-training of transformer models.
 
+OCRoscope relies on cld2 for OCR rate estimation and should run in a little more than 80 languages.
+
 ## Use
 
 Given a text, OCRoscope will return a python object with associated metrics:
