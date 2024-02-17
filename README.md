@@ -13,7 +13,13 @@ The standardized measure of OCRoscope can be used to assess the feasibility of s
 
 OCRoscope leverages the differential results of language detection techniques for short and long OCR texts. On long texts, language detection is usually resilient to mistakes. This is no longer the case when language detection is applied on very short segments. The standard measure of OCR quality in OCRscope checks is based on a ratio of ngrams (7-grams by default) with a language not matching the one detected on long segments.
 
-Consequently, OCRoscope does not yield a rate of recognized vs. non-recognized words, even though both indicators should be largely correlated.
+Language detection is performed by cld2 (through the Python package Pycld2). While better language detection model exists (including cld2 successor, cld3), cld2 is likely the fastest currently available and is struggling more with OCR noises which is unexpectedly a feature for OCRoscope. OCR quality rate estimated through cld2 is rather well distributed, which makes it easier to differentiate really good OCR quality from correct one.
+
+To illustrate the approach, this long text is correctly identified as French with >99% confidence by pycld2, as despite the many mistakes, there are enough non-ambiguous French words:
+
+```NOUVELLES POLI TI Q^U E S. Suede. Stockholm , le 2 5 décembre 1792. Le général Toll ira à Varsovie en quarté d'envoyé de la Suede auprès du roi et de la république ; A 1 même rey.u l'ordre de s'y rendra incessamment. 11 paraît que k Uc-régeik a des craintes ; il a fait venir chez l*ji les membres c Ij*``` tribunal 4e la cour , et leur a rtmis son lesfca n at. La fermentation qu'a causée 1 ,'ari r?tavh n k M p v riote Thorild tî'est pas appaisée y le luigage qv'il a yailé an duc-régent a été bien entendu par le peu) k y ir M» (U i n'entendrait pas l'apostrdphe suivante ? ttRxc3xa7nd &gt;la libuk à r otre raison , et ne et nous force pas de i'ache'ef r i te n :e sang,. Le duc a fait x,épa4idre sur-le-champ une fjtbprijuun à te us les habitans di$ Toyaume , pour les detourntr de mr laisser sé luire par de fa,ux bruits et des jugemens pe rver$ , e i en même temps l'ordre a. été donné à la garnison de charger et de se tenir prête à marcher. (**Mercure Français*, 1793, January 25th```
+
+Yet one short ngram ("n k M p v riote Thorild") is classified as unknown by cld2. Complete processing by OCRoscope yiled of rate of 41% non-recognized 7-grams, which results in an OCR quality rate of 59%. In comparison, the self-estimated rate of OCR valid words by the French National Library is significantly higher (85%) for the whole document.
 
 ## Typical usage
 
