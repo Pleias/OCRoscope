@@ -54,7 +54,7 @@ def split_text(text, segment_length, sample_size = None, min_letter_ratio = .3):
     
     #We activate the sampling mode if there is a sample_size specified and if the number of segments in the text is longer the sample size.
     if sample_size is not None:
-        if num_segments >= sample_size:
+        if len(list_segment) >= sample_size:
             list_segment = sample(list_segment, sample_size)
         
     return list_segment, nonchar_content
