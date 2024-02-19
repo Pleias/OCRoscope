@@ -11,6 +11,9 @@ class ocr_evaluation:
     def calculate_ocr_rate(self, language_detection_segment = 1000, ocr_detection_segment = 7, sample_size = 1000):
         if self.length_text <= ocr_detection_segment:
             print("Text is too short for OCR rate recognition. Aborting!")
+            self.ratio_nonchar = None
+            self.ratio_segment = None
+            self.probability = None
         else:
             text = self.text.replace('-\n', '')
 
